@@ -12,7 +12,7 @@ namespace Core.DataAcces
     {
         //Veritabanından yapılacak sorguları temsil eden generic interface 
         IQueryable<T> GetAll();//Tüm verileri çekecek metod
-        IQueryable<T> GetWhereAsync(Expression<Func<T,bool>> predicate);//Şarta bağlı verileri çekecek metod
+        IQueryable<T> GetWhere(Expression<Func<T,bool>> predicate);//Şarta bağlı verileri çekecek metod
         Task<T> GetSingleAsync(Expression<Func<T, bool>> predicate);//Şarta bağlı tek veri getirecek metod
         Task<T> GetByIdAsync(string id);//Id'ye göre veri getirecek metod
     }

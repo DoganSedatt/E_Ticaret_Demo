@@ -13,8 +13,8 @@ namespace Core.DataAcces
         Task<bool> AddAsync(T entity);//Tek veri ekleyecek metod
         Task<bool> AddAsyncRange(List<T> entities);//Çok veri ekleyecek metod
         Task<bool> UpdateAsync(T entity);//Veri güncelleme metodu
-        Task<bool> DeleteWithIdAsync(string id);//Id ile veri silen metod
-        Task<bool> DeleteWithModelAsync(T entity);//Verilen model ile veri silen metod 
+        bool DeleteWithIdAsync(string id);//Id ile veri silen metod
+        bool DeleteWithModelAsync(T entity);//Verilen model ile veri silen metod 
 
     }
 }
