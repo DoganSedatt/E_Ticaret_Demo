@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Core.DataAcces.EfCoreRepository
 {
-    public class WriteRepository<T, TContext> : IRepository<T>
+    public class WriteRepository<T, TContext> : IWriteRepository<T>
         where T : BaseEntity<Guid>,
         new() where TContext : DbContext
     {
@@ -19,6 +19,31 @@ namespace Core.DataAcces.EfCoreRepository
             _context = context;
         }
 
-        public DbSet<T> GetTable => throw new NotImplementedException();
+        public DbSet<T> GetTable => _context.Set<T>();
+
+        public Task<bool> AddAsync(T entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> AddAsyncRange(List<T> entities)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool DeleteWithIdAsync(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool DeleteWithModelAsync(T entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> UpdateAsync(T entity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
