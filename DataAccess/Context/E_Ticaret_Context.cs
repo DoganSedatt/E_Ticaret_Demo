@@ -10,6 +10,9 @@ namespace DataAccess.Context
 {
     public class E_Ticaret_Context : DbContext
     {
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<ProductCategory> ProductCategories { get; set; }
         public E_Ticaret_Context(DbContextOptions options) : base(options)
         {}
 
