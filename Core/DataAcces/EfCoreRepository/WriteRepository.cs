@@ -1,5 +1,6 @@
 ﻿using Core.Entity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,30 +21,47 @@ namespace Core.DataAcces.EfCoreRepository
         }
 
         public DbSet<T> GetTable => _context.Set<T>();
-
-        public Task<bool> AddAsync(T entity)
+        //T entity'sinin tablo bilgisini alır
+        public async Task<bool> AddAsync(T entity)
         {
-            throw new NotImplementedException();
+            entity.CreatedDate = DateTime.UtcNow;
+            EntityEntry<T> entry = await GetTable.AddAsync(entity);
+            await _context.SaveChangesAsync();
+            return entry.State == EntityState.Added;
+            //Verilen entity'i ekle ve durumunun added olup olmadığını dön
         }
 
-        public Task<bool> AddAsyncRange(List<T> entities)
+        public async Task<bool> AddAsyncRange(List<T> entities)
         {
-            throw new NotImplementedException();
+            await GetTable.AddRangeAsync(entities);
+            return true;
         }
 
-        public bool DeleteWithIdAsync(string id)
+        public async Task<bool> DeleteWithIdAsync(string id, bool softDelete=true)
         {
-            throw new NotImplementedException();
+            T? entity = await GetTable.FirstOrDefaultAsync(entity => entity.Id == Guid.Parse(id));
+            if(softDelete)
+            entity.DeletedDate = DateTime.UtcNow;
+
+            return DeleteWithModelAsync(entity);
+
         }
 
         public bool DeleteWithModelAsync(T entity)
         {
-            throw new NotImplementedException();
+           EntityEntry<T> entry= GetTable.Remove(entity);
+            entity.DeletedDate = DateTime.UtcNow;
+           _context.SaveChanges();
+           return entry.State == EntityState.Deleted;
         }
 
-        public Task<bool> UpdateAsync(T entity)
+        public bool Update(T entity)
         {
-            throw new NotImplementedException();
+           EntityEntry<T> entry= GetTable.Update(entity);
+            entity.UpdatedDate = DateTime.UtcNow;
+            _context.SaveChanges();
+            return entry.State == EntityState.Modified;
+
         }
     }
 }
