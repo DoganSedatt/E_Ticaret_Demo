@@ -21,25 +21,20 @@ namespace Core.DataAcces.EfCoreRepository
         }
 
         public DbSet<T> GetTable => _context.Set<T>();
+        //T entity'sinin tablo bilgisini alır
 
         public IQueryable<T> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<T> GetByIdAsync(string id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<T> GetSingleAsync(Expression<Func<T, bool>> predicate)
-        {
-            throw new NotImplementedException();
-        }
-
+            => GetTable;
+        //Tüm veriyi çeker 
         public IQueryable<T> GetWhere(Expression<Func<T, bool>> predicate)
-        {
-            throw new NotImplementedException();
-        }
+            => GetTable.Where(predicate);
+        //Verilen şarta uygun verileri çeker
+        public async Task<T> GetByIdAsync(string id)
+            => await GetTable.FindAsync(Guid.Parse(id));
+        //Verilen id'ye uygun veriyi getirir
+        public async Task<T> GetSingleAsync(Expression<Func<T, bool>> predicate)
+            => await GetTable.FirstOrDefaultAsync(predicate);
+        //Verilen şarta uygun tek bir veriyi getirir
+        
     }
 }
