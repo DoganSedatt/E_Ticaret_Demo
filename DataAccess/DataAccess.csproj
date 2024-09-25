@@ -23,4 +23,9 @@
     <ProjectReference Include="..\Entites\Entites.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Repository\Category\Abstract\" />
+    <Folder Include="Repository\Category\Concrete\" />
+  </ItemGroup>
+
 </Project>
