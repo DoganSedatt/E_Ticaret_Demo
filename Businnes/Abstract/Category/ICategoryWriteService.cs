@@ -1,4 +1,5 @@
-﻿using Entites;
+﻿using Businnes.Requests.Category;
+using Entites;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace Businnes
 {
     public interface ICategoryWriteService
     {
-        Task<Category> AddCategoryAsync(Category category);
+        Task<Category> AddCategoryAsync(AddCategoryRequest request);
         Task<List<Category>> AddRangeCategoriesAsync(IEnumerable<Category> categories);
         Task<Category> DeleteCategoryByIdAsync(Guid id);
         Task<Category> DeleteCategoryAsync(Category category);

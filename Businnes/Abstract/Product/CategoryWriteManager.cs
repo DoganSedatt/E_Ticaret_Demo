@@ -1,4 +1,5 @@
-﻿using DataAccess.Repository;
+﻿using Businnes.Requests.Category;
+using DataAccess.Repository;
 using Entites;
 using System;
 using System.Collections.Generic;
@@ -17,10 +18,11 @@ namespace Businnes.Abstract.Product
             _categoryWriteRepository = categoryWriteRepository;
         }
 
-        public async Task<Category> AddCategoryAsync(Category category)
+        public async Task<Category> AddCategoryAsync(AddCategoryRequest request)
         {
-            var result= await _categoryWriteRepository.AddAsync(category);
-            if (result) return category;
+            Category response=new Category { CategoryName = request.CategoryName };
+            var result= await _categoryWriteRepository.AddAsync(response);
+            if (result) return response;
 
             return null;
         }

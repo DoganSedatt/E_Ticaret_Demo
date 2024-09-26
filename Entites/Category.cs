@@ -10,7 +10,7 @@ namespace Entites
     public class Category:BaseEntity<Guid>
     {
         public string CategoryName { get; set; }
-        public ICollection<ProductCategory> Products { get; set; }
+        public virtual ICollection<ProductCategory> Products { get; set; }
 
     }
 }
