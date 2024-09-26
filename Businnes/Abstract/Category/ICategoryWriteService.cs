@@ -9,7 +9,7 @@ namespace Businnes
 {
     public interface ICategoryWriteService
     {
-        Task<Category> AddCategoryAsync(string categoryName);
+        Task<Category> AddCategoryAsync(Category category);
         Task<List<Category>> AddRangeCategoriesAsync(IEnumerable<Category> categories);
         Task<Category> DeleteCategoryByIdAsync(Guid id);
         Task<Category> DeleteCategoryAsync(Category category);
