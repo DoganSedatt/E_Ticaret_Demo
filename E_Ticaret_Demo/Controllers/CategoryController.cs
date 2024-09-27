@@ -26,5 +26,6 @@ namespace E_Ticaret_Demo.Controllers
             return cat;
            
         }
+        
     }
 }

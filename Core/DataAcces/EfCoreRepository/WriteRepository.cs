@@ -31,7 +31,7 @@ namespace Core.DataAcces.EfCoreRepository
             //Verilen entity'i ekle ve durumunun added olup olmadığını dön
         }
 
-        public async Task<bool> AddAsyncRange(List<T> entities)
+        public async Task<bool> AddAsyncRange(IEnumerable<T> entities)
         {
             await GetTable.AddRangeAsync(entities);
             return true;

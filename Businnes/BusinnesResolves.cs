@@ -1,4 +1,4 @@
-﻿using Businnes.Abstract.Product;
+﻿using Businnes.Concrete.Category;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
