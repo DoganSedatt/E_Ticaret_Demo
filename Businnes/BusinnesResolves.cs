@@ -1,4 +1,5 @@
-﻿using Businnes.Concrete.Category;
+﻿using Businnes.Concrete;
+using DataAccess.Repository;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace Businnes
         public static void GetBusinnesResolves(this IServiceCollection services)
         {
             services.AddScoped<ICategoryWriteService, CategoryWriteManager>();
+            
         }
     }
 }

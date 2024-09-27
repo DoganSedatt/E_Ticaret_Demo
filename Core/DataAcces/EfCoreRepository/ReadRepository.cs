@@ -29,8 +29,8 @@ namespace Core.DataAcces.EfCoreRepository
         public IQueryable<T> GetWhere(Expression<Func<T, bool>> predicate)
             => GetTable.Where(predicate);
         //Verilen şarta uygun verileri çeker
-        public async Task<T> GetByIdAsync(string id)
-            => await GetTable.FindAsync(Guid.Parse(id));
+        public async Task<T> GetByIdAsync(Guid id)
+            => await GetTable.FindAsync(id);
         //Verilen id'ye uygun veriyi getirir
         public async Task<T> GetSingleAsync(Expression<Func<T, bool>> predicate)
             => await GetTable.FirstOrDefaultAsync(predicate);

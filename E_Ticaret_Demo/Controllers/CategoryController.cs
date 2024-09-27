@@ -26,6 +26,12 @@ namespace E_Ticaret_Demo.Controllers
             return cat;
            
         }
+        [HttpPut]
+        public async Task<Category> UpdateCategory([FromBody] UpdateCategoryRequest request)
+        {
+            Category response=await _categoryWriteService.UpdateCategoryAsync(request);
+            return response;
+        }
         
     }
 }

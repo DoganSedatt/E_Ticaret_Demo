@@ -37,9 +37,9 @@ namespace Core.DataAcces.EfCoreRepository
             return true;
         }
 
-        public async Task<bool> DeleteWithIdAsync(string id, bool softDelete=true)
+        public async Task<bool> DeleteWithIdAsync(Guid id, bool softDelete=true)
         {
-            T? entity = await GetTable.FirstOrDefaultAsync(entity => entity.Id == Guid.Parse(id));
+            T? entity = await GetTable.FirstOrDefaultAsync(entity => entity.Id == id);
             if(softDelete)
             entity.DeletedDate = DateTime.UtcNow;
 

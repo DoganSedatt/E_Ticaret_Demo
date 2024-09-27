@@ -14,6 +14,6 @@ namespace Businnes
         Task<List<Category>> AddRangeCategoriesAsync(IEnumerable<Category> categories);
         Task<Category> DeleteCategoryByIdAsync(Guid id);
         Task<Category> DeleteCategoryAsync(Category category);
-        Task<Category> UpdateCategoryAsync(Category category);
+        Task<Category> UpdateCategoryAsync(UpdateCategoryRequest category);
     }
 }
