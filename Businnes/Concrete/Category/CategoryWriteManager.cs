@@ -55,13 +55,13 @@ namespace Businnes.Concrete
 
         public async Task<Category> UpdateCategoryAsync(UpdateCategoryRequest category)
         {
-            Category? find = await _categoryReadRepository.GetSingleAsync(c => c.Id == category.Id);
+            Category? response = await _categoryReadRepository.GetSingleAsync(c => c.Id == category.Id);
 
-            if (find != null)
+            if (response != null)
             {
-                find.CategoryName = category.CategoryName;
-                 _categoryWriteRepository.Update(find);
-                return find;
+                response.CategoryName = category.CategoryName;
+                 _categoryWriteRepository.Update(response);
+                return response;
             }
 
             return null;
