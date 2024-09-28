@@ -46,10 +46,13 @@ namespace Businnes.Concrete
             return null;
         }
 
-        public async Task<Category> DeleteCategoryAsync(Category category)
+        public async Task<Category> DeleteCategoryAsync(DeleteByCategoryRequest request)
         {
-            var result = _categoryWriteRepository.DeleteWithModelAsync(category);
-            if (result) return category;
+            Category response = await _categoryReadRepository.GetSingleAsync(c => c.CategoryName.Contains(request.CategoryName));
+            
+            
+            var result = _categoryWriteRepository.DeleteWithModelAsync(response);
+            if (result) return response;
 
             return null;
         }

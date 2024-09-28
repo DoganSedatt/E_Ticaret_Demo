@@ -33,12 +33,19 @@ namespace E_Ticaret_Demo.Controllers
             Category response=await _categoryWriteService.UpdateCategoryAsync(request);
             return response;
         }
-        [HttpDelete]
+        [HttpDelete("Id")]
         public async Task<Category> DeleteCategory([FromBody] DeleteCategoryRequest request)
         {
             Category response = await _categoryWriteService.DeleteCategoryByIdAsync(request.Id);
             return response;
         }
+        [HttpDelete]
+        public async Task<Category> DeleteByCategory([FromBody] DeleteByCategoryRequest request)
+        {
+            Category response = await _categoryWriteService.DeleteCategoryAsync(request);
+            return response;
+        }
+
         [HttpPost("AddRAnge")]
         public async Task<List<Category>> AddRangeCategory([FromBody] IEnumerable<AddRangeCategoryRequest> request)
         {

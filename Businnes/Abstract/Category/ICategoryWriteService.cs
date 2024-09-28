@@ -13,7 +13,7 @@ namespace Businnes
         Task<Category> AddCategoryAsync(AddCategoryRequest request);
         Task<List<Category>> AddRangeCategoriesAsync(IEnumerable<AddRangeCategoryRequest> categories);
         Task<Category> DeleteCategoryByIdAsync(Guid id);
-        Task<Category> DeleteCategoryAsync(Category category);
+        Task<Category> DeleteCategoryAsync(DeleteByCategoryRequest category);
         Task<Category> UpdateCategoryAsync(UpdateCategoryRequest category);
     }
 }
