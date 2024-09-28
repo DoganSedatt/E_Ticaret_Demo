@@ -4,6 +4,7 @@ using DataAccess.Repository;
 using Entites;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections;
 
 namespace E_Ticaret_Demo.Controllers
 {
@@ -30,6 +31,18 @@ namespace E_Ticaret_Demo.Controllers
         public async Task<Category> UpdateCategory([FromBody] UpdateCategoryRequest request)
         {
             Category response=await _categoryWriteService.UpdateCategoryAsync(request);
+            return response;
+        }
+        [HttpDelete]
+        public async Task<Category> DeleteCategory([FromBody] DeleteCategoryRequest request)
+        {
+            Category response = await _categoryWriteService.DeleteCategoryByIdAsync(request.Id);
+            return response;
+        }
+        [HttpPost("AddRAnge")]
+        public async Task<List<Category>> AddRangeCategory([FromBody] IEnumerable<AddRangeCategoryRequest> request)
+        {
+            var response = await _categoryWriteService.AddRangeCategoriesAsync(request);
             return response;
         }
         

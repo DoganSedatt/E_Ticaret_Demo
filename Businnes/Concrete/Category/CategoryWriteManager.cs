@@ -29,10 +29,21 @@ namespace Businnes.Concrete
             return null;
         }
 
-        public async Task<List<Category>> AddRangeCategoriesAsync(IEnumerable<Category> categories)
+        public async Task<List<Category>> AddRangeCategoriesAsync(IEnumerable<AddRangeCategoryRequest> categories)
         {
 
-            throw new NotImplementedException();
+            var categoryEntities = categories.SelectMany(c => c.CategoryNames.Select(name => new Category { CategoryName = name })).ToList();
+
+            
+            var response = await _categoryWriteRepository.AddAsyncRange(categoryEntities);
+
+            if (response)
+            {
+                
+                return categoryEntities;
+            }
+
+            return null;
         }
 
         public async Task<Category> DeleteCategoryAsync(Category category)
@@ -46,7 +57,7 @@ namespace Businnes.Concrete
         public async Task<Category> DeleteCategoryByIdAsync(Guid id)
         {
             Category? response = await _categoryReadRepository.GetByIdAsync(id);
-            var category = await _categoryWriteRepository.DeleteWithIdAsync(id);
+            
             if (response != null) return response;
 
             return null;

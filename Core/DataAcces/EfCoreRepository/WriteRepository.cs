@@ -34,24 +34,34 @@ namespace Core.DataAcces.EfCoreRepository
         public async Task<bool> AddAsyncRange(IEnumerable<T> entities)
         {
             await GetTable.AddRangeAsync(entities);
+            foreach (var entity in entities)
+            {
+                entity.CreatedDate = DateTime.UtcNow;
+            }
+            await _context.SaveChangesAsync();
             return true;
         }
 
         public async Task<bool> DeleteWithIdAsync(Guid id, bool softDelete=true)
         {
             T? entity = await GetTable.FirstOrDefaultAsync(entity => entity.Id == id);
-            if(softDelete)
-            entity.DeletedDate = DateTime.UtcNow;
+            if (softDelete == true)
+            {
+                entity.DeletedDate = DateTime.UtcNow;
+            }
+            
 
+            await _context.SaveChangesAsync();
             return DeleteWithModelAsync(entity);
 
         }
 
         public bool DeleteWithModelAsync(T entity)
         {
-           EntityEntry<T> entry= GetTable.Remove(entity);
             entity.DeletedDate = DateTime.UtcNow;
-           _context.SaveChanges();
+            EntityEntry<T> entry= GetTable.Remove(entity);
+            
+            _context.SaveChanges();
            return entry.State == EntityState.Deleted;
         }
 
