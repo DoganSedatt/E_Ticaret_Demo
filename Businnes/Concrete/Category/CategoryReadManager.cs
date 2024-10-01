@@ -1,21 +1,32 @@
-﻿using System;
+﻿using DataAccess.Repository;
+using Entites;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Businnes.Concrete.Category
+namespace Businnes
 {
     public class CategoryReadManager : ICategoryReadService
     {
-        public Task<IEnumerable<Entites.Category>> GetCategoriesAsync()
+        private readonly ICategoryReadRepository _categoryReadRepository;
+
+        public CategoryReadManager(ICategoryReadRepository categoryReadRepository)
         {
-            throw new NotImplementedException();
+            _categoryReadRepository = categoryReadRepository;
         }
 
-        public Task<Entites.Category> GetSingleCategoryAsync(Guid id)
+        public async Task<IEnumerable<Category>> GetCategoriesAsync()
         {
-            throw new NotImplementedException();
+            var response= _categoryReadRepository.GetAll();
+            return response;
+        }
+
+        public async Task<Category> GetSingleCategoryAsync(Guid id)
+        {
+            var response=await _categoryReadRepository.GetByIdAsync(id);
+            return response;
         }
     }
 }
