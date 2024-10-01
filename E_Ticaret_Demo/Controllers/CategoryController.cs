@@ -13,10 +13,11 @@ namespace E_Ticaret_Demo.Controllers
     public class CategoryController : ControllerBase
     {
         private readonly ICategoryWriteService _categoryWriteService;
-
-        public CategoryController(ICategoryWriteService categoryWriteService)
+        private readonly ICategoryReadService _categoryReadService;
+        public CategoryController(ICategoryWriteService categoryWriteService, ICategoryReadService categoryReadService)
         {
             _categoryWriteService = categoryWriteService;
+            _categoryReadService = categoryReadService;
         }
 
         [HttpPost]
@@ -52,6 +53,11 @@ namespace E_Ticaret_Demo.Controllers
             var response = await _categoryWriteService.AddRangeCategoriesAsync(request);
             return response;
         }
-        
+        [HttpGet]
+        public async Task<IEnumerable<Category>> GetAllCategories()
+        {
+            var response= await _categoryReadService.GetCategoriesAsync();
+            return response;
+        }
     }
 }

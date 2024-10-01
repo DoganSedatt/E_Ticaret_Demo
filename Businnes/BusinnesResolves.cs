@@ -14,6 +14,7 @@ namespace Businnes
         public static void GetBusinnesResolves(this IServiceCollection services)
         {
             services.AddScoped<ICategoryWriteService, CategoryWriteManager>();
+            services.AddScoped<ICategoryReadService, CategoryReadManager>();
             
         }
     }
