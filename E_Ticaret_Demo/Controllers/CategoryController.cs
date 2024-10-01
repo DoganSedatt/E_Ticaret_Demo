@@ -23,15 +23,15 @@ namespace E_Ticaret_Demo.Controllers
         [HttpPost]
         public async Task<Category> AddCategory([FromBody] AddCategoryRequest request)
         {
-            Category cat= await _categoryWriteService.AddCategoryAsync(request);
+            Category cat = await _categoryWriteService.AddCategoryAsync(request);
 
             return cat;
-           
+
         }
         [HttpPut]
         public async Task<Category> UpdateCategory([FromBody] UpdateCategoryRequest request)
         {
-            Category response=await _categoryWriteService.UpdateCategoryAsync(request);
+            Category response = await _categoryWriteService.UpdateCategoryAsync(request);
             return response;
         }
         [HttpDelete("Id")]
@@ -56,7 +56,13 @@ namespace E_Ticaret_Demo.Controllers
         [HttpGet]
         public async Task<IEnumerable<Category>> GetAllCategories()
         {
-            var response= await _categoryReadService.GetCategoriesAsync();
+            var response = await _categoryReadService.GetCategoriesAsync();
+            return response;
+        }
+        [HttpGet("id")]
+        public async Task<Category> GetCategoryById([FromQuery] Guid id)
+        {
+            var response=await _categoryReadService.GetSingleCategoryAsync(id);
             return response;
         }
     }
