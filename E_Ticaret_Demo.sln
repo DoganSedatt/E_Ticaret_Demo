@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.34928.147
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E_Ticaret_Demo", "E_Ticaret_Demo\E_Ticaret_Demo.csproj", "{F3ED1077-8601-4FBC-9DF6-78280B271F26}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E_Ticaret_Demo", "E_Ticaret_Demo\E_Ticaret_Demo.csproj", "{F3ED1077-8601-4FBC-9DF6-78280B271F26}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{CAB259A2-18E0-42BA-88F4-CB48F9ED38B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{CAB259A2-18E0-42BA-88F4-CB48F9ED38B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entites", "Entites\Entites.csproj", "{A9918AEF-452E-49BB-A04E-A639C0F41764}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Entites\Entities.csproj", "{A9918AEF-452E-49BB-A04E-A639C0F41764}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{FE325DA1-9674-4A06-8DCD-3D431326F76B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\DataAccess.csproj", "{FE325DA1-9674-4A06-8DCD-3D431326F76B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Businnes", "Businnes\Businnes.csproj", "{CAD4F3F9-487D-42B3-B03D-AB0640F6D8D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Businnes", "Businnes\Businnes.csproj", "{CAD4F3F9-487D-42B3-B03D-AB0640F6D8D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

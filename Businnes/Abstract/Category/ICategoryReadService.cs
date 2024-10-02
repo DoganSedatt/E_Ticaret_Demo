@@ -10,6 +10,7 @@ namespace Businnes
     public interface ICategoryReadService
     {
         Task<IEnumerable<Category>> GetCategoriesAsync();
-        Task<Category> GetSingleCategoryAsync(Guid id);
+        Task<IQueryable<Category>> GetWhereCategoriesAsync();
+        Task<Category> GetSingleByIdCategoryAsync(Guid id);
     }
 }
