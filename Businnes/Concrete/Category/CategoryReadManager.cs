@@ -1,5 +1,6 @@
 ﻿using DataAccess.Repository;
 using Entites;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,9 +24,15 @@ namespace Businnes
             return response;
         }
 
-        public async Task<Category> GetSingleCategoryAsync(Guid id)
+        public async Task<Category> GetSingleByIdCategoryAsync(Guid id)
         {
             var response=await _categoryReadRepository.GetByIdAsync(id);
+            return response;
+        }
+
+        public async Task<IEnumerable<Category>> GetWhereCategoriesAsync()
+        {
+            var response = await _categoryReadRepository.GetWhere(c => c.CategoryName.StartsWith('t')).ToListAsync();
             return response;
         }
     }
