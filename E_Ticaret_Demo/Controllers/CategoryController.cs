@@ -59,10 +59,18 @@ namespace E_Ticaret_Demo.Controllers
             var response = await _categoryReadService.GetCategoriesAsync();
             return response;
         }
+        [HttpGet("where")]
+        public async Task<IEnumerable<Category>> GetWhereCategories()
+        {
+            var response = await _categoryReadService.GetWhereCategoriesAsync();
+
+            return response;
+        }
+
         [HttpGet("id")]
         public async Task<Category> GetCategoryById([FromQuery] Guid id)
         {
-            var response=await _categoryReadService.GetSingleCategoryAsync(id);
+            var response=await _categoryReadService.GetSingleByIdCategoryAsync(id);
             return response;
         }
     }
