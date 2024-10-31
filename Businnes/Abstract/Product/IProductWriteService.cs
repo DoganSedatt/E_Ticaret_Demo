@@ -10,10 +10,10 @@ namespace Businnes.Abstract
 {
     public interface IProductWriteService
     {
-        Task<Product> AddCategoryAsync(Product request);
-        Task<List<Product>> AddRangeCategoriesAsync(IEnumerable<Product> categories);
-        Task<Product> DeleteCategoryByIdAsync(Guid id);
-        Task<Product> DeleteCategoryAsync(Product category);
-        Task<Product> UpdateCategoryAsync(Product category);
+        Task<Product> AddProductAsync(Product request);
+        Task<List<Product>> AddRangeProductAsync(IEnumerable<Product> categories);
+        Task<Product> DeleteProductByIdAsync(Guid id);
+        Task<Product> DeleteProductAsync(Product category);
+        Task<Product> UpdateProductAsync(Product category);
     }
 }
